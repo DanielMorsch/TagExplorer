@@ -56,17 +56,19 @@ namespace TagExplorer.Commands
             try
             {
                 var dte = (DTE2) ServiceProvider.GetService( typeof( DTE ) );
-
-                ProjectItem item = ProjectHelpers.GetSelectedItem( dte );
+                var solution = (IVsSolution) ServiceProvider.GetService( typeof( SVsSolution ) );
+                ProjectItem cProjItem = ProjectHelpers.GetSelectedItem( dte );
                 //string path = ProjectHelpers.GetSelectedPath( dte, true );
 
-                if ( item != null )
+                if ( cProjItem != null )
                 {
-                    Project proj = item.ContainingProject;
-                    if ( proj != null )
-                    {
-                        MessageBox.Show( "ProjName:" + proj.Name );
-                    }
+                    
+                        SolutionHelpers.SetTag( solution, cProjItem, "TEST_Tag" + cProjItem.Name );
+
+                        string sTag = SolutionHelpers.GetTag( solution, cProjItem );
+
+                        MessageBox.Show( "File:" + cProjItem.Name + "  Tag:" + sTag );
+                    
                 }
                 else
                 {
