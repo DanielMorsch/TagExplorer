@@ -56,15 +56,21 @@ namespace TagExplorer.Commands
             try
             {
                 var dte = (DTE2) ServiceProvider.GetService( typeof( DTE ) );
-                string path = ProjectHelpers.GetSelectedPath( dte, true );
 
-                if ( !string.IsNullOrEmpty( path ) )
+                ProjectItem item = ProjectHelpers.GetSelectedItem( dte );
+                //string path = ProjectHelpers.GetSelectedPath( dte, true );
+
+                if ( item != null )
                 {
-                    MessageBox.Show( path );
+                    Project proj = item.ContainingProject;
+                    if ( proj != null )
+                    {
+                        MessageBox.Show( "ProjName:" + proj.Name );
+                    }
                 }
                 else
                 {
-                    MessageBox.Show( "Couldn't resolve the folder" );
+                    MessageBox.Show( "Couldn't resolve the file. Maybe multiselected files." );
                 }
             }
             catch ( Exception ex )
@@ -72,6 +78,6 @@ namespace TagExplorer.Commands
                 Logger.Log( ex );
             }
         }
-        
+
     }
 }

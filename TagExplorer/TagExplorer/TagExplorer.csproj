@@ -57,6 +57,7 @@
     <Compile Include="Commands\EditTagCommand.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\ProjectHelpers.cs" />
+    <Compile Include="Helpers\SolutionHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagToolWindow.cs" />
     <Compile Include="TagToolWindowCommand.cs" />
