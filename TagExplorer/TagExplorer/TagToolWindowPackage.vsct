@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h" />
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h" />
+
+  <!--The Commands section is where commands, menus, and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidTagToolWindowPackage">
+    <Buttons>
+      <Button guid="guidTagToolWindowPackageCmdSet" id="TagToolWindowCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>TagToolWindow</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTagToolWindowPackageCmdSet1" id="cmdidEditTagCommand" priority="0x0100" type="Button">
+        <Parent guid="guidTagToolWindowPackageCmdSet1" id="MyMenuGroup" />
+        <Icon guid="guidImages1" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke EditTagCommand</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\TagToolWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages1" href="Commands\Resources\EditTagCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+    </Bitmaps>
+    
+    <Groups>
+      <Group guid="guidTagToolWindowPackageCmdSet1" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+    
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidTagToolWindowPackageCmdSet1" id="cmdidEditTagCommand" priority="0x0500">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_OPEN"/>
+    </CommandPlacement>
+  </CommandPlacements>
+  
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidTagToolWindowPackage" value="{5a4b70b1-1d25-45e1-bf96-d41d2e88855b}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidTagToolWindowPackageCmdSet" value="{67fd973d-8819-4cec-8de5-f5ed5eade97f}">
+      <IDSymbol name="TagToolWindowCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{1d766b2f-b660-4b31-9578-9ff9408c3703}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{b616aac5-6b80-4333-8cf3-b531d6974dfa}" name="guidTagToolWindowPackageCmdSet1">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidEditTagCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{585f8ad1-88e6-415e-a8af-0132ed3b14f1}" name="guidImages1">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
