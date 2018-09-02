@@ -71,10 +71,6 @@ namespace TagExplorer
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync( AsyncPackage package )
         {
-            // Verify the current thread is the UI thread - the call to AddCommand in TagToolWindowCommand's constructor requires
-            // the UI thread.
-            ThreadHelper.ThrowIfNotOnUIThread();
-
             OleMenuCommandService commandService = await package.GetServiceAsync( ( typeof( IMenuCommandService ) ) ) as OleMenuCommandService;
             Instance = new TagToolWindowCommand( package, commandService );
         }

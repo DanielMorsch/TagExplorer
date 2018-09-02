@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace TagExplorer
@@ -9,6 +10,7 @@ namespace TagExplorer
 
         public static void SetTag( IVsSolution cSolution, ProjectItem cProjectItem, string sTag )
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             IVsHierarchy hierarchy;
             cSolution.GetProjectOfUniqueName( cProjectItem.ContainingProject.UniqueName, out hierarchy );
             IVsBuildPropertyStorage buildPropertyStorage = hierarchy as IVsBuildPropertyStorage;
@@ -22,6 +24,7 @@ namespace TagExplorer
 
         public static string GetTag( IVsSolution cSolution, ProjectItem cProjectItem )
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             string sReturn = "";
             IVsHierarchy hierarchy;
             cSolution.GetProjectOfUniqueName( cProjectItem.ContainingProject.UniqueName, out hierarchy );

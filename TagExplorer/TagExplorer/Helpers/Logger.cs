@@ -19,6 +19,7 @@ public static class Logger
     [SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", MessageId = "Microsoft.VisualStudio.Shell.Interop.IVsOutputWindowPane.OutputString(System.String)")]
     public static void Log(string message)
     {
+        ThreadHelper.ThrowIfNotOnUIThread();
         if (string.IsNullOrEmpty(message))
             return;
 

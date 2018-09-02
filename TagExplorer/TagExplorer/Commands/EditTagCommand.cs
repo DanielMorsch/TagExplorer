@@ -62,13 +62,15 @@ namespace TagExplorer.Commands
 
                 if ( cProjItem != null )
                 {
-                    
-                        SolutionHelpers.SetTag( solution, cProjItem, "TEST_Tag" + cProjItem.Name );
+                    EditDialog dlgEdit = new EditDialog();
 
-                        string sTag = SolutionHelpers.GetTag( solution, cProjItem );
+                    string sOldTags = SolutionHelpers.GetTag( solution, cProjItem );
+                    string sNewTags = dlgEdit.ShowEditDialog( sOldTags, cProjItem.Name );
 
-                        MessageBox.Show( "File:" + cProjItem.Name + "  Tag:" + sTag );
-                    
+                    if ( dlgEdit.Selected )
+                    {
+                        SolutionHelpers.SetTag( solution, cProjItem, sNewTags );
+                    }
                 }
                 else
                 {
