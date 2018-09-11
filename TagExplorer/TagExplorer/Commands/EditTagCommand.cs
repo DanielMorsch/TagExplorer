@@ -53,6 +53,7 @@ namespace TagExplorer.Commands
 
         private void EditTag( object sender, EventArgs e )
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             try
             {
                 var dte = (DTE2) ServiceProvider.GetService( typeof( DTE ) );

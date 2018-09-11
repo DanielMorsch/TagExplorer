@@ -10,9 +10,14 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Name="MyToolWindow">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">TagToolWindow</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel >
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <Button x:Name="btnRefresh" Content="Refresh" Click="btnRefresh_Click" />
+            </StackPanel>
+            <TreeView x:Name="treeTags" DockPanel.Dock="Bottom" />
+        </DockPanel>
     </Grid>
 </UserControl>

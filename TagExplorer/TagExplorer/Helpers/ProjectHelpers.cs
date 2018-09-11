@@ -38,16 +38,6 @@ namespace TagExplorer
                     {
                         file = item.GetFilePath();
                     }
-
-                    //Project proj = selItem.Object as Project;
-
-                    //if ( proj != null )
-                        //return openSolutionProjectAsRegularFile ? $"\"{proj.FileName}\"" : proj.GetRootFolder();
-
-                    //Solution sol = selItem.Object as Solution;
-
-                    //if ( sol != null )
-                        //return openSolutionProjectAsRegularFile ? $"\"{sol.FullName}\"" : Path.GetDirectoryName( sol.FileName );
                 }
             }
 

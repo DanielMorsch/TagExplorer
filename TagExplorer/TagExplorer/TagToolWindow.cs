@@ -2,7 +2,10 @@
 {
     using System;
     using System.Runtime.InteropServices;
+    using EnvDTE;
+    using EnvDTE80;
     using Microsoft.VisualStudio.Shell;
+    using Microsoft.VisualStudio.Shell.Interop;
 
     /// <summary>
     /// This class implements the tool window exposed by this package and hosts a user control.
@@ -23,12 +26,14 @@
         /// </summary>
         public TagToolWindow() : base( null )
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             this.Caption = "TagToolWindow";
+            
 
-            // This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
-            // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
-            // the object returned by the Content property.
-            this.Content = new TagToolWindowControl();
+            var dte = (DTE2) ServiceProvider.GlobalProvider.GetService( typeof( DTE ) );
+            var solution = (IVsSolution) ServiceProvider.GlobalProvider.GetService( typeof( SVsSolution ) );
+            this.Content = new TagToolWindowControl( solution, dte );
         }
+        
     }
 }
